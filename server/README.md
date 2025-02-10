@@ -27,3 +27,11 @@ The following is the API expected response.
   "model": "densenet201"
 }
 ```
+
+### Testing the API.
+
+To run some unit test on the API you run the following command:
+
+```shell
+pytest
+```

@@ -17,7 +17,7 @@ predictTBRouter = APIRouter(prefix="/api/v1/tb")
 def predict_tb_(model_name: str, xray: Annotated[bytes, File()]):
     start = time.time()
     if model_name.strip().lower() not in allowed_models.keys():
-        JSONResponse(
+        return JSONResponse(
             {
                 "time": time.time() - start,
                 "ok": False,
@@ -35,7 +35,7 @@ def predict_tb_(model_name: str, xray: Annotated[bytes, File()]):
                 "ok": True,
                 "status": "ok",
                 "prediction": prediction,
-                'model': model_name
+                'model': model_name.strip().lower()
             },
             status_code=200,
         )
