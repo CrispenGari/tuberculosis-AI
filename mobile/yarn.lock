@@ -1176,6 +1176,21 @@
     find-up "^5.0.0"
     js-yaml "^4.1.0"
 
+"@gorhom/bottom-sheet@5":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@gorhom/bottom-sheet/-/bottom-sheet-5.1.1.tgz#43ecb9e7b4d4ca4b4cefdf3b6b497f7715f350bc"
+  integrity sha512-Y8FiuRmeZYaP+ZGQ0axDwWrrKqVp4ByYRs1D2fTJTxHMt081MHHRQsqmZ3SK7AFp3cSID+vTqnD8w/KAASpy+w==
+  dependencies:
+    "@gorhom/portal" "1.0.14"
+    invariant "^2.2.4"
+
+"@gorhom/portal@1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@gorhom/portal/-/portal-1.0.14.tgz#1953edb76aaba80fb24021dc774550194a18e111"
+  integrity sha512-MXyL4xvCjmgaORr/rtryDNFy3kU4qUbKlwtQqqsygd0xX3mhKjOLn6mQK8wfu0RkoE0pBE0nAasRoHua+/QZ7A==
+  dependencies:
+    nanoid "^3.3.1"
+
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
@@ -1805,6 +1820,18 @@
   integrity sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==
   dependencies:
     "@sinonjs/commons" "^3.0.0"
+
+"@tanstack/query-core@5.67.1":
+  version "5.67.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.67.1.tgz#419e8a94acd773d63cf4746d3df842c3329f56c2"
+  integrity sha512-AkFmuukVejyqVIjEQoFhLb3q+xHl7JG8G9cANWTMe3s8iKzD9j1VBSYXgCjy6vm6xM8cUCR9zP2yqWxY9pTWOA==
+
+"@tanstack/react-query@^5.67.1":
+  version "5.67.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.67.1.tgz#040b2e2fe60681f8c1f69f2378f0d43d9533af51"
+  integrity sha512-fH5u4JLwB6A+wLFdi8wWBWAYoJV5deYif2OveJ26ktAWjU499uvVFS1wPWnyEyq5LvZX1MZInvv9QRaIZANRaQ==
+  dependencies:
+    "@tanstack/query-core" "5.67.1"
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -3326,6 +3353,13 @@ expo-font@~13.0.3:
   version "13.0.3"
   resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-13.0.3.tgz#7660ec4e3f5df0782bfa563fea7170c7ce2865ab"
   integrity sha512-9IdYz+A+b3KvuCYP7DUUXF4VMZjPU+IsvAnLSVJ2TfP6zUD2JjZFx3jeo/cxWRkYk/aLj5+53Te7elTAScNl4Q==
+  dependencies:
+    fontfaceobserver "^2.1.0"
+
+expo-font@~13.0.4:
+  version "13.0.4"
+  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-13.0.4.tgz#c60771446598ddfa98ac1d25244c916a089a99c9"
+  integrity sha512-eAP5hyBgC8gafFtprsz0HMaB795qZfgJWqTmU0NfbSin1wUuVySFMEPMOrTkTgmazU73v4Cb4x7p86jY1XXYUw==
   dependencies:
     fontfaceobserver "^2.1.0"
 
@@ -5370,7 +5404,7 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoid@3.3.8, nanoid@^3.3.7:
+nanoid@3.3.8, nanoid@^3.3.1, nanoid@^3.3.7:
   version "3.3.8"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.8.tgz#b1be3030bee36aaff18bacb375e5cce521684baf"
   integrity sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==
@@ -5973,6 +6007,11 @@ react-native-is-edge-to-edge@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.1.6.tgz#69ec13f70d76e9245e275eed4140d0873a78f902"
   integrity sha512-1pHnFTlBahins6UAajXUqeCOHew9l9C2C8tErnpGC3IyLJzvxD+TpYAixnCbrVS52f7+NvMttbiSI290XfwN0w==
+
+react-native-popup-menu@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/react-native-popup-menu/-/react-native-popup-menu-0.16.1.tgz#b1bb56be5c0838bbc2f532af7b1f554b7ceef566"
+  integrity sha512-xRS7mRh0exwu7Iw8PPVHdM11d13A/KzYjy0/fZx3zVtxISxPkNaDGayau6oa7HqO3Nj0oS9ulFCYjcQfG6vahA==
 
 react-native-reanimated@~3.16.1:
   version "3.16.7"
