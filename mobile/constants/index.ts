@@ -9,6 +9,7 @@ export const COLORS = {
   white: "#ffffff",
   gray: "#8E9598",
   dark: "#243642",
+  transparent: "transparent",
 };
 
 export const Fonts = {
