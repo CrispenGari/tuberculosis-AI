@@ -2,7 +2,7 @@ import { COLORS, FONTS, Fonts } from "@/constants";
 import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React from "react";
-import { LogBox, StatusBar, TouchableOpacity, View } from "react-native";
+import { LogBox, TouchableOpacity, View } from "react-native";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
@@ -12,6 +12,7 @@ import { usePlatform } from "@/hooks";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { Ionicons } from "@expo/vector-icons";
 import { onImpact } from "@/utils";
+import { StatusBar } from "expo-status-bar";
 
 LogBox.ignoreLogs;
 LogBox.ignoreAllLogs();
@@ -32,7 +33,7 @@ const Layout = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar barStyle={"dark-content"} />
+      <StatusBar style="light" backgroundColor={COLORS.secondary} />
       <GestureHandlerRootView>
         <BottomSheetModalProvider>
           <MenuProvider>
@@ -68,11 +69,14 @@ const RootLayout = () => {
           headerTitleStyle: {
             fontFamily: FONTS.bold,
             fontSize: 24,
-            color: COLORS.black,
+            color: COLORS.white,
           },
           headerTitleAlign: "center",
           navigationBarHidden: true,
           headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: COLORS.secondary,
+          },
           headerLeft: ({}) => (
             <TouchableOpacity
               style={{
@@ -88,12 +92,91 @@ const RootLayout = () => {
               }}
               hitSlop={20}
             >
-              <Ionicons name="close-outline" size={30} color={COLORS.black} />
+              <Ionicons name="close-outline" size={30} color={COLORS.white} />
             </TouchableOpacity>
           ),
         }}
         name="(modals)/landing"
       />
+      <Stack.Screen
+        options={{
+          presentation: os === "ios" ? "modal" : "fullScreenModal",
+          headerTitle: "TERMS AND CONDITIONS",
+          headerTitleStyle: {
+            fontFamily: FONTS.bold,
+            fontSize: 24,
+            color: COLORS.white,
+          },
+          headerTitleAlign: "center",
+          navigationBarHidden: true,
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: COLORS.secondary,
+          },
+          headerLeft: ({}) => (
+            <TouchableOpacity
+              style={{
+                marginRight: 20,
+              }}
+              activeOpacity={0.7}
+              onPress={async () => {
+                if (settings.haptics) {
+                  await onImpact();
+                }
+                if (router.canGoBack()) {
+                  router.back();
+                } else {
+                  router.replace("/(tabs)");
+                }
+              }}
+              hitSlop={20}
+            >
+              <Ionicons name="close-outline" size={30} color={COLORS.white} />
+            </TouchableOpacity>
+          ),
+        }}
+        name="(modals)/tnc"
+      />
+      <Stack.Screen
+        options={{
+          presentation: os === "ios" ? "modal" : "fullScreenModal",
+          headerTitle: "PRIVACY POLICY",
+          headerTitleStyle: {
+            fontFamily: FONTS.bold,
+            fontSize: 24,
+            color: COLORS.white,
+          },
+          headerTitleAlign: "center",
+          navigationBarHidden: true,
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: COLORS.secondary,
+          },
+          headerLeft: ({}) => (
+            <TouchableOpacity
+              style={{
+                marginRight: 20,
+              }}
+              activeOpacity={0.7}
+              onPress={async () => {
+                if (settings.haptics) {
+                  await onImpact();
+                }
+                if (router.canGoBack()) {
+                  router.back();
+                } else {
+                  router.replace("/(tabs)");
+                }
+              }}
+              hitSlop={20}
+            >
+              <Ionicons name="close-outline" size={30} color={COLORS.white} />
+            </TouchableOpacity>
+          ),
+        }}
+        name="(modals)/pp"
+      />
+
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="+not-found" />
     </Stack>
