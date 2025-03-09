@@ -1,25 +1,29 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { COLORS } from "@/constants";
+import Typography from "@/components/Typography/Typography";
+import Form from "@/components/Form/Form";
 
 const Page = () => {
   const { settings, update } = useSettingsStore();
+
   return (
-    <View
+    <ScrollView
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: settings.theme === "dark" ? COLORS.dark : COLORS.light,
+      }}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{
+        padding: 20,
+        paddingBottom: 150,
       }}
     >
-      <Text
-        onPress={() => {
-          update({ ...settings, new: true });
-        }}
-      >
-        Page
-      </Text>
-    </View>
+      <Form />
+
+      <Typography>Page</Typography>
+    </ScrollView>
   );
 };
 

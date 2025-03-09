@@ -1,11 +1,16 @@
-import { View, Text } from "react-native";
+import { Text, ScrollView } from "react-native";
 import React from "react";
+import { useDiagnoseHistoryStore } from "@/store/useDiagnoseHistoryStore";
 
 const Page = () => {
+  const { history } = useDiagnoseHistoryStore();
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Page</Text>
-    </View>
+    <ScrollView
+      style={{ flex: 1 }}
+      contentContainerStyle={{ paddingBottom: 150 }}
+    >
+      <Text>{JSON.stringify({ history }, undefined, 2)}</Text>
+    </ScrollView>
   );
 };
 

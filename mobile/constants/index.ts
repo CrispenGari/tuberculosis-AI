@@ -8,6 +8,14 @@ export const LANDING_MESSAGES = [
   "Use our AI mobile tool to 99.9% accurately predict TB from your chest X-ray images.",
 ];
 
+export const APP_NAME = "TBAIDA";
+
+export const MODELS = [
+  { name: "Mobilenet v3", id: 0, value: "mobilenetv3" },
+  { name: "Resnet 50", id: 1, value: "resnet50" },
+  { name: "Densenet 201", id: 2, value: "densenet201" },
+];
+
 export const COLORS = {
   black: "#000000",
   white: "#ffffff",
@@ -39,4 +47,5 @@ export const FONTS = {
 
 export const STORAGE_NAMES = {
   SETTINGS: "tb-ai:settings",
+  HISTORY: "tb-ai:history",
 };

@@ -12,7 +12,11 @@ import { useSettingsStore } from "@/store/useSettingsStore";
 import { COLORS, FONTS } from "@/constants";
 import { onFetchUpdateAsync, onImpact, rateApp } from "@/utils";
 import SettingItem from "@/components/SettingItem/SettingItem";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import Card from "@/components/Card/Card";
 import * as Constants from "expo-constants";
@@ -147,9 +151,29 @@ const Page = () => {
             />
           }
         />
+        <SettingItem
+          subtitle={settings.keepAwake ? "ONN" : "OFF"}
+          onPress={async () => {
+            if (settings.haptics) {
+              await onImpact();
+            }
+            update({
+              ...settings,
+              keepAwake: !settings.keepAwake,
+            });
+          }}
+          title="Keep Awake"
+          Icon={
+            <Ionicons
+              name={settings.keepAwake ? "eye-outline" : "eye-off-outline"}
+              size={18}
+              color={settings.theme === "dark" ? COLORS.white : COLORS.black}
+            />
+          }
+        />
 
         <SettingItem
-          subtitle={"Adjust the app brightness."}
+          subtitle={"Adjust the app Brightness."}
           onPress={async () => {
             if (settings.haptics) {
               await onImpact();
@@ -164,15 +188,65 @@ const Page = () => {
             />
           }
         />
-      </Card>
-      <Typography styles={styles.headerText}>Storage and History</Typography>
-      <Card>
+
         <SettingItem
-          subtitle={"saving"}
+          subtitle={settings.fontsize?.toUpperCase()}
           onPress={async () => {
             if (settings.haptics) {
               await onImpact();
             }
+          }}
+          title="App FontSize."
+          Icon={
+            <MaterialIcons
+              name={"brightness-medium"}
+              size={18}
+              color={settings.theme === "dark" ? COLORS.white : COLORS.black}
+            />
+          }
+        />
+        <SettingItem
+          subtitle={settings.fontWeight?.toUpperCase()}
+          onPress={async () => {
+            if (settings.haptics) {
+              await onImpact();
+            }
+          }}
+          title="App Font Weight."
+          Icon={
+            <MaterialCommunityIcons
+              name={"format-font-size-decrease"}
+              size={18}
+              color={settings.theme === "dark" ? COLORS.white : COLORS.black}
+            />
+          }
+        />
+        <SettingItem
+          subtitle={settings.fontStyle?.toUpperCase()}
+          onPress={async () => {
+            if (settings.haptics) {
+              await onImpact();
+            }
+          }}
+          title="App Style."
+          Icon={
+            <MaterialCommunityIcons
+              name={"format-font"}
+              size={18}
+              color={settings.theme === "dark" ? COLORS.white : COLORS.black}
+            />
+          }
+        />
+      </Card>
+      <Typography styles={styles.headerText}>Storage and History</Typography>
+      <Card>
+        <SettingItem
+          subtitle={settings.keepHistory ? "SAVING" : "NOT SAVING"}
+          onPress={async () => {
+            if (settings.haptics) {
+              await onImpact();
+            }
+            update({ ...settings, keepHistory: !settings.keepHistory });
           }}
           title="Save Diagnosis History."
           Icon={
