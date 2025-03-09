@@ -19,6 +19,8 @@ export const COLORS = {
   main: "#003092",
   secondary: "#D84040",
   tertiary: "#1B4D3E",
+  lightSecondary: "#F7CFD8",
+  darkSecondary: "#3F4F44",
 };
 
 export const Fonts = {

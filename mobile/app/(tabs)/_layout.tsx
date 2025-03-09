@@ -1,11 +1,14 @@
 import React from "react";
 import { Tabs } from "expo-router";
 import { useMediaQuery } from "@/hooks";
-import { Platform, StyleSheet } from "react-native";
+import { Platform } from "react-native";
 import { COLORS, FONTS } from "@/constants";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import DiagnoseHeader from "@/components/Headers/DiagnoseHeader";
+import HistoryHeader from "@/components/Headers/HistoryHeader";
+import SettingsHeader from "@/components/Headers/SettingsHeader";
 
 const Layout = () => {
   const {
@@ -49,6 +52,7 @@ const Layout = () => {
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="analytics-outline" color={color} size={size} />
             ),
+            header: () => <DiagnoseHeader />,
           }}
         />
         <Tabs.Screen
@@ -58,16 +62,18 @@ const Layout = () => {
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="history" color={color} size={size} />
             ),
+            header: () => <HistoryHeader />,
           }}
         />
         <Tabs.Screen
           name="settings"
           options={{
-            headerShown: false,
+            headerShown: true,
             title: "Settings",
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="settings-outline" color={color} size={size} />
             ),
+            header: () => <SettingsHeader />,
           }}
         />
       </Tabs>
