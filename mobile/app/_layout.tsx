@@ -82,8 +82,7 @@ const RootLayout = () => {
               style={{
                 marginRight: 20,
               }}
-              activeOpacity={0.7}
-              onPress={async () => {
+              onPressIn={async () => {
                 if (settings.haptics) {
                   await onImpact();
                 }
@@ -118,8 +117,7 @@ const RootLayout = () => {
               style={{
                 marginRight: 20,
               }}
-              activeOpacity={0.7}
-              onPress={async () => {
+              onPressIn={async () => {
                 if (settings.haptics) {
                   await onImpact();
                 }
@@ -157,8 +155,7 @@ const RootLayout = () => {
               style={{
                 marginRight: 20,
               }}
-              activeOpacity={0.7}
-              onPress={async () => {
+              onPressIn={async () => {
                 if (settings.haptics) {
                   await onImpact();
                 }
@@ -177,6 +174,82 @@ const RootLayout = () => {
         name="(modals)/pp"
       />
 
+      <Stack.Screen
+        options={{
+          presentation: os === "ios" ? "modal" : "fullScreenModal",
+          headerTitle: "RESULTS",
+          headerTitleStyle: {
+            fontFamily: FONTS.bold,
+            fontSize: 24,
+            color: COLORS.white,
+          },
+          headerTitleAlign: "center",
+          navigationBarHidden: true,
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: COLORS.secondary,
+          },
+          headerLeft: ({ canGoBack }) => (
+            <TouchableOpacity
+              style={{
+                marginRight: 20,
+              }}
+              onPressIn={async () => {
+                if (settings.haptics) {
+                  await onImpact();
+                }
+                if (canGoBack) {
+                  router.back();
+                } else {
+                  router.replace("/(tabs)");
+                }
+              }}
+              hitSlop={20}
+            >
+              <Ionicons name="close-outline" size={30} color={COLORS.white} />
+            </TouchableOpacity>
+          ),
+        }}
+        name="(modals)/result"
+      />
+      <Stack.Screen
+        options={{
+          presentation: os === "ios" ? "modal" : "fullScreenModal",
+          headerTitle: "ABOUT TBAIDA",
+          headerTitleStyle: {
+            fontFamily: FONTS.bold,
+            fontSize: 24,
+            color: COLORS.white,
+          },
+          headerTitleAlign: "center",
+          navigationBarHidden: true,
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: COLORS.secondary,
+          },
+          headerLeft: ({}) => (
+            <TouchableOpacity
+              style={{
+                marginRight: 20,
+              }}
+              onPressIn={async () => {
+                if (settings.haptics) {
+                  await onImpact();
+                }
+                if (router.canGoBack()) {
+                  router.back();
+                } else {
+                  router.replace("/(tabs)");
+                }
+              }}
+              hitSlop={20}
+            >
+              <Ionicons name="close-outline" size={30} color={COLORS.white} />
+            </TouchableOpacity>
+          ),
+        }}
+        name="(modals)/about"
+      />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="+not-found" />
     </Stack>

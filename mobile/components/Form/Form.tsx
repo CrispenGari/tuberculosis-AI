@@ -5,7 +5,13 @@ import Divider from "../Divider/Divider";
 import { COLORS, FONTS, MODELS } from "@/constants";
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useSettingsStore } from "@/store/useSettingsStore";
-import { generateRNFile, onImpact } from "@/utils";
+import {
+  generateRNFile,
+  onImpact,
+  playDiagnosingSound,
+  playResultSound,
+  stopDiagnosingSound,
+} from "@/utils";
 import * as ImagePicker from "expo-image-picker";
 import { useMediaPermissions } from "@/hooks/useMediaPermissions/useMediaPermissions";
 import ContentLoader from "../ContentLoader/ContentLoader";
@@ -18,8 +24,10 @@ import { predictTB } from "@/utils/react-query";
 import Typography from "../Typography/Typography";
 import uuid from "react-native-uuid";
 import { useDiagnoseHistoryStore } from "@/store/useDiagnoseHistoryStore";
+import { useRouter } from "expo-router";
 
 const Form = () => {
+  const router = useRouter();
   const { camera, gallery } = useMediaPermissions();
   const { isPending: diagnosing, mutateAsync } = useMutation({
     mutationKey: ["diagnose"],
@@ -42,6 +50,9 @@ const Form = () => {
     if (settings.haptics) {
       await onImpact();
     }
+    if (settings.sound) {
+      await playDiagnosingSound();
+    }
     if (!!!state.uri) {
       setState((s) => ({ ...s, error: "Please select a Chest X-Ray image." }));
       return;
@@ -54,23 +65,32 @@ const Form = () => {
       modelName: state.model,
       xray,
     });
+    if (settings.sound) {
+      await stopDiagnosingSound();
+      await playResultSound();
+    }
     if (predictionResponse.status === "error") {
       return setState({
         ...state,
         error: "Something went wrong on the server try again.",
       });
     }
-
     const history = {
       prediction: predictionResponse,
       date: new Date(),
       id: uuid.v4(),
+      xray: state.uri,
     } satisfies THistory;
 
     if (settings.keepHistory) {
       add(history);
     }
-    // do the navigation and results
+    router.navigate({
+      pathname: "/(modals)/result",
+      params: {
+        results: JSON.stringify(history),
+      },
+    });
   };
 
   const select = async () => {
@@ -400,6 +420,7 @@ const Form = () => {
         )}
 
         <TouchableOpacity
+          disabled={diagnosing}
           style={{
             padding: 10,
             backgroundColor: COLORS.secondary,

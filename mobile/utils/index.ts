@@ -10,6 +10,53 @@ import * as Constants from "expo-constants";
 import { ReactNativeFile } from "apollo-upload-client";
 import * as rnMimeTypes from "react-native-mime-types";
 
+let diagnosingSound: Audio.Sound | undefined;
+let resultSound: Audio.Sound | undefined;
+
+export const playDiagnosingSound = async () => {
+  const { sound: s, status } = await Audio.Sound.createAsync(
+    require("../assets/sounds/diagnosing.wav"),
+    {
+      shouldPlay: true,
+      isLooping: true,
+      isMuted: false,
+    }
+  );
+  if (status.isLoaded) {
+    diagnosingSound = s;
+  }
+  if (!!diagnosingSound) {
+    await diagnosingSound.playAsync().catch((err) => console.log(err));
+  }
+};
+
+export const playResultSound = async () => {
+  const { sound: s, status } = await Audio.Sound.createAsync(
+    require("../assets/sounds/results.wav"),
+    {
+      shouldPlay: true,
+      isLooping: false,
+      isMuted: false,
+    }
+  );
+  if (status.isLoaded) {
+    resultSound = s;
+  }
+  if (!!resultSound) {
+    await resultSound.playAsync().catch((err) => console.log(err));
+  }
+};
+export const stopDiagnosingSound = async () => {
+  if (!!diagnosingSound) {
+    await diagnosingSound.pauseAsync();
+  }
+};
+export const stopResultSound = async () => {
+  if (!!resultSound) {
+    await resultSound.pauseAsync();
+  }
+};
+
 export const generateRNFile = ({
   uri,
   name,
@@ -25,7 +72,6 @@ export const generateRNFile = ({
       })
     : null;
 };
-let publishedSound: Audio.Sound | undefined;
 
 export const rateApp = async () => {
   const available = await StoreReview.isAvailableAsync();
@@ -53,22 +99,6 @@ export const onFetchUpdateAsync = async () => {
   }
 };
 
-// export const playPublishSound = async () => {
-//   const { sound: s, status } = await Audio.Sound.createAsync(
-//     require("@/assets/sounds/published.mp3"),
-//     {
-//       shouldPlay: true,
-//       isLooping: false,
-//       isMuted: false,
-//     }
-//   );
-//   if (status.isLoaded) {
-//     publishedSound = s;
-//   }
-//   if (!!publishedSound) {
-//     await publishedSound.playAsync().catch((err) => console.log(err));
-//   }
-// };
 export const onImpact = async () =>
   await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 export const getMimeType = (url: string) => mime.getType(url) || undefined;

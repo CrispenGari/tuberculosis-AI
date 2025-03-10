@@ -11,10 +11,13 @@ import { COLORS, FONTS } from "@/constants";
 import Typography from "../Typography/Typography";
 import { Ionicons } from "@expo/vector-icons";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { useRouter } from "expo-router";
+import { onImpact } from "@/utils";
 
 const SettingsHeader = () => {
   const { top } = useSafeAreaInsets();
   const { settings } = useSettingsStore();
+  const router = useRouter();
   return (
     <SafeAreaView
       style={{
@@ -50,6 +53,12 @@ const SettingsHeader = () => {
             backgroundColor: COLORS.secondary,
             width: 40,
             height: 40,
+          }}
+          onPressIn={async () => {
+            if (settings.haptics) {
+              await onImpact();
+            }
+            router.navigate("/(modals)/about");
           }}
         >
           <Ionicons name="help-outline" size={20} color={COLORS.white} />
