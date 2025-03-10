@@ -251,7 +251,43 @@ const RootLayout = () => {
         name="(modals)/about"
       />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="+not-found" />
+      <Stack.Screen
+        name="+not-found"
+        options={{
+          headerTitle: "NOT FOUND",
+          headerTitleStyle: {
+            fontFamily: FONTS.bold,
+            fontSize: 24,
+            color: COLORS.white,
+          },
+          headerTitleAlign: "center",
+          navigationBarHidden: true,
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: COLORS.secondary,
+          },
+          headerLeft: ({}) => (
+            <TouchableOpacity
+              style={{
+                marginRight: 20,
+              }}
+              onPressIn={async () => {
+                if (settings.haptics) {
+                  await onImpact();
+                }
+                if (router.canGoBack()) {
+                  router.back();
+                } else {
+                  router.replace("/(tabs)");
+                }
+              }}
+              hitSlop={20}
+            >
+              <Ionicons name="close-outline" size={30} color={COLORS.white} />
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Stack>
   );
 };

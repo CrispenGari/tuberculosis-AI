@@ -178,7 +178,7 @@ const Page = () => {
                 if (settings.haptics) {
                   await onImpact();
                 }
-                router.push("/(common)/tnc");
+                router.push("/(modals)/tnc");
               }}
               style={styles.clickable_text}
             >
@@ -190,7 +190,7 @@ const Page = () => {
                 if (settings.haptics) {
                   await onImpact();
                 }
-                router.push("/(common)/pp");
+                router.push("/(modals)/pp");
               }}
               style={styles.clickable_text}
             >

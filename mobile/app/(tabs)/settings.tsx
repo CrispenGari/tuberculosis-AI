@@ -21,9 +21,11 @@ import { useRouter } from "expo-router";
 import Card from "@/components/Card/Card";
 import * as Constants from "expo-constants";
 import Typography from "@/components/Typography/Typography";
+import { useDiagnoseHistoryStore } from "@/store/useDiagnoseHistoryStore";
 
 const Page = () => {
-  const { settings, update } = useSettingsStore();
+  const { settings, update, restore: resetSettings } = useSettingsStore();
+  const { clear } = useDiagnoseHistoryStore();
   const router = useRouter();
   return (
     <ScrollView
@@ -94,11 +96,9 @@ const Page = () => {
                   text: "Yes",
                   onPress: async () => {
                     if (settings.haptics) {
-                      // restoreSearchTerms();
-                      // restoreSettings();
-                      // clearFavorites();
-                      // clearSearchHistory();
-                      // toggle();
+                      resetSettings();
+                      clear();
+                      router.replace("/(modals)/landing");
                     }
                   },
                   style: "default",
@@ -271,7 +271,9 @@ const Page = () => {
                   text: "Yes",
                   onPress: async () => {
                     if (settings.haptics) {
+                      await onImpact();
                     }
+                    clear();
                   },
                   style: "default",
                 },
