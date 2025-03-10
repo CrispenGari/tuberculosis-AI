@@ -2,7 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useSettingsStore } from "@/store/useSettingsStore";
-import { COLORS, FONTS } from "@/constants";
+import { COLORS, FONTS, relativeTimeObject } from "@/constants";
 import { THistory } from "@/types";
 import Card from "@/components/Card/Card";
 import Typography from "@/components/Typography/Typography";
@@ -12,13 +12,31 @@ import Animated, {
   ZoomInDown,
 } from "react-native-reanimated";
 import { onImpact } from "@/utils";
-import Bar from "@/components/BarChart/BarChart";
+import TableComponent from "../../components/TableComponent/TableComponent";
 
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import updateLocal from "dayjs/plugin/updateLocale";
+
+dayjs.extend(relativeTime);
+dayjs.extend(updateLocal);
+dayjs.updateLocale("en", {
+  relativeTime: relativeTimeObject,
+});
 const Page = () => {
   const { results } = useLocalSearchParams<{ results: string }>();
-  const history = JSON.parse(results) as THistory;
   const { settings } = useSettingsStore();
   const router = useRouter();
+  const [history, setHistory] = React.useState<THistory | null>(null);
+
+  React.useEffect(() => {
+    if (results) {
+      setHistory(JSON.parse(results) as THistory);
+    }
+  }, [results]);
+
+  console.log({ results });
+
   return (
     <>
       <Stack.Screen
@@ -47,6 +65,7 @@ const Page = () => {
           paddingBottom: 150,
           padding: 20,
         }}
+        showsVerticalScrollIndicator={false}
       >
         <Animated.View entering={SlideInRight.duration(500).delay(200)}>
           <Card style={{ width: "100%", maxWidth: 400, alignSelf: "center" }}>
@@ -102,7 +121,7 @@ const Page = () => {
             </Typography>
 
             <Typography styles={{ alignSelf: "flex-end" }}>
-              {history.date}
+              {dayjs(new Date(history.date)).fromNow()}
             </Typography>
           </Card>
         </Animated.View>
@@ -154,10 +173,13 @@ const Page = () => {
                 marginVertical: 20,
                 alignSelf: "center",
               }}
-              source={{ uri: history?.xray }}
+              source={{
+                uri: history.xray,
+              }}
             />
           </Card>
         </Animated.View>
+
         <Animated.View
           entering={SlideInLeft.duration(500).delay(200)}
           style={{
@@ -259,7 +281,7 @@ const Page = () => {
                     ? COLORS.tertiary
                     : COLORS.secondary,
                 top: -10,
-                width: 100,
+                width: 150,
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: 999,
@@ -279,10 +301,25 @@ const Page = () => {
                   textTransform: "uppercase",
                 }}
               >
-                model used
+                Prediction Summary
               </Text>
             </View>
-            <Bar />
+            <TableComponent
+              tableHead={["KEY", "VALUE"]}
+              tableData={[
+                ["When", dayjs(new Date(history.date)).fromNow()],
+                ["Model Used", history.prediction.model],
+                ["Class Label", history.prediction.prediction.label.toString()],
+                ["Time Taken", `${history.prediction.time.toFixed(2)}s`],
+                ["Class Name", history.prediction.prediction.class_label],
+                [
+                  "Confidence",
+                  `${(history.prediction.prediction.probability * 100).toFixed(
+                    0
+                  )}%`,
+                ],
+              ]}
+            />
           </Card>
         </Animated.View>
       </ScrollView>
