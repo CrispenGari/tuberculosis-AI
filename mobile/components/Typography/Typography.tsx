@@ -2,6 +2,7 @@ import { Text, StyleProp, TextStyle } from "react-native";
 import React from "react";
 import { COLORS, FONTS } from "@/constants";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import { FONT_STYLING, getFontFamily } from "@/styles";
 
 const Typography = ({
   children,
@@ -11,7 +12,7 @@ const Typography = ({
   styles?: StyleProp<TextStyle>;
 }) => {
   const {
-    settings: { theme },
+    settings: { theme, ...settings },
   } = useSettingsStore();
   return (
     <Text
@@ -21,6 +22,8 @@ const Typography = ({
           color: theme === "dark" ? COLORS.white : COLORS.black,
         },
         styles,
+        FONT_STYLING[settings.fontsize],
+        getFontFamily({ ...settings, theme }),
       ]}
     >
       {children}

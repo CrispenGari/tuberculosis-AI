@@ -15,7 +15,7 @@ import { onImpact } from "@/utils";
 interface Props {}
 const FontWeightSettingsBottomSheet = React.forwardRef<BottomSheetModal, Props>(
   ({}, ref) => {
-    const snapPoints = React.useMemo(() => ["30%"], []);
+    const snapPoints = React.useMemo(() => ["35%"], []);
     const { settings } = useSettingsStore();
     return (
       <BottomSheetModal

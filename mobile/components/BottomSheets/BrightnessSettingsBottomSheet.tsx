@@ -16,7 +16,7 @@ const ReadingBrightnessSettingsBottomSheet = React.forwardRef<
   BottomSheetModal,
   Props
 >(({}, ref) => {
-  const snapPoints = React.useMemo(() => ["20%"], []);
+  const snapPoints = React.useMemo(() => ["40%"], []);
   const { settings } = useSettingsStore();
   return (
     <BottomSheetModal

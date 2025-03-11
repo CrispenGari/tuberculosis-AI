@@ -28,6 +28,7 @@ import ReadingBrightnessSettingsBottomSheet from "@/components/BottomSheets/Brig
 import FontSizeSettingsBottomSheet from "@/components/BottomSheets/FontsizeSettingsBottomSheet";
 import FontWeightSettingsBottomSheet from "@/components/BottomSheets/FontWeightSettingsBottomSheet";
 import FontStyleSettingsBottomSheet from "@/components/BottomSheets/FontStyleSettingsBottomSheet";
+import { getIconSize } from "@/styles";
 
 const Page = () => {
   const { settings, update, restore: resetSettings } = useSettingsStore();
@@ -75,7 +76,7 @@ const Page = () => {
             Icon={
               <MaterialIcons
                 name="vibration"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -93,7 +94,7 @@ const Page = () => {
             Icon={
               <MaterialIcons
                 name="update"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -139,7 +140,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="refresh-sharp"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -165,7 +166,7 @@ const Page = () => {
             Icon={
               <MaterialIcons
                 name={settings.theme === "light" ? "light-mode" : "dark-mode"}
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -189,7 +190,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name={settings.keepAwake ? "eye-outline" : "eye-off-outline"}
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -207,7 +208,7 @@ const Page = () => {
             Icon={
               <MaterialIcons
                 name={"brightness-medium"}
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -225,7 +226,7 @@ const Page = () => {
             Icon={
               <MaterialCommunityIcons
                 name={"format-font-size-increase"}
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -242,7 +243,7 @@ const Page = () => {
             Icon={
               <MaterialIcons
                 name={"font-download"}
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -259,7 +260,7 @@ const Page = () => {
             Icon={
               <MaterialCommunityIcons
                 name={"format-font"}
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -279,7 +280,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="save-outline"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -323,7 +324,7 @@ const Page = () => {
             Icon={
               <MaterialIcons
                 name="clear-all"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -342,7 +343,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="star-outline"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -373,7 +374,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="heart-outline"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -391,7 +392,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="help"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -414,7 +415,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="logo-github"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -434,7 +435,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="document-text-outline"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
@@ -452,7 +453,7 @@ const Page = () => {
             Icon={
               <Ionicons
                 name="document-text-outline"
-                size={18}
+                size={getIconSize(settings)}
                 color={settings.theme === "dark" ? COLORS.white : COLORS.black}
               />
             }
