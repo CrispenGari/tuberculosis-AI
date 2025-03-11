@@ -36,4 +36,5 @@ export type THistory = {
   date: Date;
   prediction: TPredictionResponse;
   xray: string;
+  image: string;
 };

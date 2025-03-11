@@ -176,7 +176,7 @@ const RootLayout = () => {
 
       <Stack.Screen
         options={{
-          // presentation: os === "ios" ? "modal" : "fullScreenModal",
+          presentation: os === "ios" ? "modal" : "fullScreenModal",
           headerTitle: "RESULTS",
           headerTitleStyle: {
             fontFamily: FONTS.bold,

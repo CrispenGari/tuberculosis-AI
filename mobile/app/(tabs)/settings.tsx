@@ -8,6 +8,7 @@ import {
   Alert,
 } from "react-native";
 import React from "react";
+import KeepAwake from "expo-keep-awake";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { COLORS, FONTS } from "@/constants";
 import { onFetchUpdateAsync, onImpact, rateApp } from "@/utils";
@@ -165,6 +166,10 @@ const Page = () => {
               if (settings.haptics) {
                 await onImpact();
               }
+              !settings.keepAwake
+                ? await KeepAwake.activateKeepAwakeAsync()
+                : await KeepAwake.deactivateKeepAwake();
+
               update({
                 ...settings,
                 keepAwake: !settings.keepAwake,

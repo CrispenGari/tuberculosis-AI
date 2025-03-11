@@ -28,7 +28,7 @@ import { useRouter } from "expo-router";
 
 const Form = () => {
   const router = useRouter();
-  const { camera, gallery } = useMediaPermissions();
+  const { camera, gallery, requestCameraPermission } = useMediaPermissions();
   const { isPending: diagnosing, mutateAsync } = useMutation({
     mutationKey: ["diagnose"],
     mutationFn: predictTB,
@@ -38,12 +38,14 @@ const Form = () => {
   const [state, setState] = React.useState<{
     uri?: string;
     model: TModel;
+    base64?: string | null;
     fileName?: string | null;
     error?: string;
   }>({
     uri: undefined,
     model: "mobilenetv3",
     fileName: undefined,
+    base64: undefined,
   });
 
   const diagnose = async () => {
@@ -80,6 +82,7 @@ const Form = () => {
       date: new Date(),
       id: uuid.v4(),
       xray: state.uri,
+      image: `data:image/jpeg;base64,${state.base64}`,
     } satisfies THistory;
 
     if (settings.keepHistory) {
@@ -112,6 +115,7 @@ const Form = () => {
           ...state,
           uri: assets[0].uri,
           fileName: assets[0].fileName,
+          base64: assets[0].base64,
         }));
       }
     }
@@ -135,8 +139,11 @@ const Form = () => {
           ...state,
           uri: assets[0].uri,
           fileName: assets[0].fileName,
+          base64: assets[0].base64,
         }));
       }
+    } else {
+      await requestCameraPermission();
     }
   };
   const remove = async () => {

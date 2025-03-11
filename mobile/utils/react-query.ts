@@ -1,7 +1,7 @@
 import { TModel, TPredictionResponse } from "@/types";
 import { ReactNativeFile } from "apollo-upload-client";
 
-const __serverURL__ = "https://a7c0-105-9-170-162.ngrok-free.app"; //process.env.EXPO_PUBLIC_SERVER_URL!;
+const __serverURL__ = "https://a626-105-9-218-11.ngrok-free.app"; //process.env.EXPO_PUBLIC_SERVER_URL!;
 
 export const predictTB = async ({
   xray,

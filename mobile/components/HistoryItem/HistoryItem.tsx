@@ -1,6 +1,6 @@
 import { View, TouchableOpacity } from "react-native";
 import React from "react";
-import Swipeable from "react-native-gesture-handler/Swipeable";
+import Swipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import { onImpact } from "../../utils";
 import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS, FONTS, relativeTimeObject } from "../../constants";
@@ -11,7 +11,6 @@ import { THistory } from "@/types";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import Animated from "react-native-reanimated";
 import Typography from "../Typography/Typography";
-import Card from "../Card/Card";
 import { useDiagnoseHistoryStore } from "@/store/useDiagnoseHistoryStore";
 import { useRouter } from "expo-router";
 
@@ -24,7 +23,6 @@ interface Props {
   history: THistory;
 }
 const HistoryItem: React.FunctionComponent<Props> = ({ history }) => {
-  const swipeableRef = React.useRef<Swipeable | undefined>();
   const {
     settings: { theme, ...settings },
   } = useSettingsStore();
@@ -33,7 +31,6 @@ const HistoryItem: React.FunctionComponent<Props> = ({ history }) => {
 
   return (
     <Swipeable
-      ref={swipeableRef as any}
       renderRightActions={(_progress, _dragX) => {
         return (
           <TouchableOpacity
@@ -82,7 +79,7 @@ const HistoryItem: React.FunctionComponent<Props> = ({ history }) => {
         }}
       >
         <Animated.Image
-          source={{ uri: history.xray }}
+          source={{ uri: history.image }}
           style={{
             height: 40,
             width: 40,

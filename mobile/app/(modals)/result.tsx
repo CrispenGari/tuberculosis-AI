@@ -27,15 +27,7 @@ const Page = () => {
   const { results } = useLocalSearchParams<{ results: string }>();
   const { settings } = useSettingsStore();
   const router = useRouter();
-  const [history, setHistory] = React.useState<THistory | null>(null);
-
-  React.useEffect(() => {
-    if (results) {
-      setHistory(JSON.parse(results) as THistory);
-    }
-  }, [results]);
-
-  console.log({ results });
+  const history = JSON.parse(results) as THistory;
 
   return (
     <>
@@ -174,7 +166,7 @@ const Page = () => {
                 alignSelf: "center",
               }}
               source={{
-                uri: history.xray,
+                uri: history?.image,
               }}
             />
           </Card>
