@@ -6,7 +6,6 @@ import Form from "@/components/Form/Form";
 
 const Page = () => {
   const { settings } = useSettingsStore();
-
   return (
     <ScrollView
       style={{
