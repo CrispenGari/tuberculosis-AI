@@ -1,50 +1,86 @@
-# Welcome to your Expo app 👋
+### mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a UI mobile for the TBAIDA app that consume the fast api server.
 
-## Get started
+### APP UI
 
-1. Install dependencies
+This application is a native app that supports all devices `iOS` and `Android`. This sections presents the screenshots of the UI components of this app.
 
-   ```bash
-   npm install
-   ```
+#### Landing Page
 
-2. Start the app
+- This page presents the landing page of the app when you use the app for the first time allowing you to view the Terms and conditions of the app and privacy policy of the app, which can also be viewed in the settings page.
 
-   ```bash
-    npx expo start
-   ```
+- `iOS`
+<p align="center">
+<img src='/images/screenshots/ios/0.jpeg' alt="ios" width="200"/>
+<img src='/images/screenshots/ios/1.jpeg' alt="ios" width="200"/>
+<img src='/images/screenshots/ios/2.jpeg' alt="ios" width="200"/>
+</p>
 
-In the output, you'll find options to open the app in a
+- `Android`
+<p align="center">
+<img src='/images/screenshots/android/0.jpeg' alt="android" width="200"/>
+<img src='/images/screenshots/android/1.jpeg' alt="android" width="200"/>
+<img src='/images/screenshots/android/2.jpeg' alt="android" width="200"/>
+</p>
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+#### Home Page
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- `iOS`
+<p align="center">
+<img src='/images/screenshots/ios/3.jpeg' alt="ios" width="200"/>
+<img src='/images/screenshots/ios/4.jpeg' alt="ios" width="200"/>
+</p>
 
-## Get a fresh project
+- `Android`
+<p align="center">
+<img src='/images/screenshots/android/3.jpeg' alt="android" width="200"/>
+<img src='/images/screenshots/android/5.jpeg' alt="android" width="200"/>
+</p>
 
-When you're ready, run:
+#### Results
 
-```bash
-npm run reset-project
-```
+- The diagonosis results are presented in their own screen. Below are the screenshots for the UI.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- `iOS`
+  <p align="center">
+  <img src='/images/screenshots/ios/5.jpeg' alt="ios" width="200"/>
 
-## Learn more
+    </p>
 
-To learn more about developing your project with Expo, look at the following resources:
+- `Android`
+<p align="center">
+<img src='/images/screenshots/android/4.jpeg' alt="android" width="200"/>
+</p>
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+#### History Page
 
-## Join the community
+- `iOS`
+<p align="center">
+<img src='/images/screenshots/ios/6.jpeg' alt="ios" width="200"/>
+</p>
 
-Join our community of developers creating universal apps.
+- `Android`
+<p align="center">
+<img src='/images/screenshots/android/6.jpeg' alt="android" width="200"/>
+</p>
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+#### Settings Page
+
+- `iOS`
+<p align="center">
+<img src='/images/screenshots/ios/7.jpeg' alt="ios" width="200"/>
+<img src='/images/screenshots/ios/8.jpeg' alt="ios" width="200"/>
+<img src='/images/screenshots/ios/9.jpeg' alt="ios" width="200"/>
+<img src='/images/screenshots/ios/10.jpeg' alt="ios" width="200"/>
+<img src='/images/screenshots/ios/11.jpeg' alt="ios" width="200"/>
+</p>
+
+- `Android`
+<p align="center">
+<img src='/images/screenshots/android/7.jpeg' alt="android" width="200"/>
+<img src='/images/screenshots/android/8.jpeg' alt="android" width="200"/>
+<img src='/images/screenshots/android/9.jpeg' alt="android" width="200"/>
+<img src='/images/screenshots/android/10.jpeg' alt="android" width="200"/>
+<img src='/images/screenshots/android/11.jpeg' alt="android" width="200"/>
+</p>
