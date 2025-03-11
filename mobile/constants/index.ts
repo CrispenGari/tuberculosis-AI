@@ -1,3 +1,5 @@
+import { TFontSize, TFontStyle, TFontWeight, TModel } from "@/types";
+
 export const LOGO = require("@/assets/images/adaptive-icon.png");
 
 export const LANDING_MESSAGES = [
@@ -10,10 +12,33 @@ export const LANDING_MESSAGES = [
 
 export const APP_NAME = "TBAIDA";
 
-export const MODELS = [
+export const MODELS: { id: number; name: string; value: TModel }[] = [
   { name: "Mobilenet v3", id: 0, value: "mobilenetv3" },
   { name: "Resnet 50", id: 1, value: "resnet50" },
   { name: "Densenet 201", id: 2, value: "densenet201" },
+];
+
+export const FONTSIZES: { id: number; name: TFontSize; value: TFontSize }[] = [
+  { name: "default", id: 0, value: "default" },
+  { name: "small", id: 0, value: "small" },
+  { name: "medium", id: 0, value: "medium" },
+  { name: "large", id: 0, value: "large" },
+];
+export const FONTWEIGHTS: {
+  id: number;
+  name: TFontWeight;
+  value: TFontWeight;
+}[] = [
+  { name: "normal", id: 0, value: "normal" },
+  { name: "bold", id: 0, value: "bold" },
+];
+export const FONTSTYLES: {
+  id: number;
+  name: TFontStyle;
+  value: TFontStyle;
+}[] = [
+  { name: "normal", id: 0, value: "normal" },
+  { name: "italic", id: 0, value: "italic" },
 ];
 
 export const COLORS = {

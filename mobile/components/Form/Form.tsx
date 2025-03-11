@@ -289,7 +289,8 @@ const Form = () => {
             fontSize: 18,
             fontFamily: FONTS.regular,
           }}
-          onValueChange={(value: any) => {
+          onValueChange={async (value: any) => {
+            if (settings.haptics) await onImpact();
             setState((state) => ({ ...state, model: value }));
           }}
           primaryColor={COLORS.secondary}

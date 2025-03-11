@@ -82,6 +82,7 @@ const ReadingBrightnessSettingsBottomSheet = React.forwardRef<
 });
 
 export default ReadingBrightnessSettingsBottomSheet;
+
 const ReadingBrightnessComponent = () => {
   const { settings, update } = useSettingsStore();
   const [value, setValue] = React.useState(settings.brightness);

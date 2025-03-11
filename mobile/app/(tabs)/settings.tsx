@@ -25,15 +25,25 @@ import Typography from "@/components/Typography/Typography";
 import { useDiagnoseHistoryStore } from "@/store/useDiagnoseHistoryStore";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import ReadingBrightnessSettingsBottomSheet from "@/components/BottomSheets/BrightnessSettingsBottomSheet";
+import FontSizeSettingsBottomSheet from "@/components/BottomSheets/FontsizeSettingsBottomSheet";
+import FontWeightSettingsBottomSheet from "@/components/BottomSheets/FontWeightSettingsBottomSheet";
+import FontStyleSettingsBottomSheet from "@/components/BottomSheets/FontStyleSettingsBottomSheet";
 
 const Page = () => {
   const { settings, update, restore: resetSettings } = useSettingsStore();
   const { clear } = useDiagnoseHistoryStore();
   const router = useRouter();
   const brightnessBottomSheetRef = React.useRef<BottomSheetModal>(null);
+  const fontsizeBottomSheetRef = React.useRef<BottomSheetModal>(null);
+  const fontWeightBottomSheetRef = React.useRef<BottomSheetModal>(null);
+  const fontStyleBottomSheetRef = React.useRef<BottomSheetModal>(null);
+
   return (
     <>
       <ReadingBrightnessSettingsBottomSheet ref={brightnessBottomSheetRef} />
+      <FontSizeSettingsBottomSheet ref={fontsizeBottomSheetRef} />
+      <FontWeightSettingsBottomSheet ref={fontWeightBottomSheetRef} />
+      <FontStyleSettingsBottomSheet ref={fontStyleBottomSheetRef} />
       <ScrollView
         style={{
           flex: 1,
@@ -209,8 +219,9 @@ const Page = () => {
               if (settings.haptics) {
                 await onImpact();
               }
+              fontsizeBottomSheetRef.current?.present();
             }}
-            title="App FontSize."
+            title="App Font Size."
             Icon={
               <MaterialCommunityIcons
                 name={"format-font-size-increase"}
@@ -225,6 +236,7 @@ const Page = () => {
               if (settings.haptics) {
                 await onImpact();
               }
+              fontWeightBottomSheetRef.current?.present();
             }}
             title="App Font Weight."
             Icon={
@@ -241,6 +253,7 @@ const Page = () => {
               if (settings.haptics) {
                 await onImpact();
               }
+              fontStyleBottomSheetRef.current?.present();
             }}
             title="App Font Style."
             Icon={
