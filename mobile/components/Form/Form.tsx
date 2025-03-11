@@ -157,7 +157,7 @@ const Form = () => {
   };
 
   return (
-    <View style={{ width: "100%", maxWidth: 500 }}>
+    <View style={{ width: "100%", maxWidth: 500, alignSelf: "center" }}>
       {state.error ? (
         <Card
           style={{

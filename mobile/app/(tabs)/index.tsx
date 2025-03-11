@@ -5,7 +5,7 @@ import { COLORS } from "@/constants";
 import Form from "@/components/Form/Form";
 
 const Page = () => {
-  const { settings, update } = useSettingsStore();
+  const { settings } = useSettingsStore();
 
   return (
     <ScrollView
