@@ -104,10 +104,10 @@ const Page = () => {
 
             <Typography styles={{ fontFamily: FONTS.bold }}>
               {history.prediction.prediction.label === 0
-                ? `The results show that you don't have TB with a confidence of ${
+                ? `The results show that you don't have TB with a model prediction accuracy of ${
                     history.prediction.prediction.probability * 100
                   }%.`
-                : `The results show that you have TB with a confidence of ${
+                : `The results show that you have TB with a model prediction accuracy of ${
                     history.prediction.prediction.probability * 100
                   }%.`}
             </Typography>
